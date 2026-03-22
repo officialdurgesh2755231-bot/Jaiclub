@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JaiClub Login</title>
+  <meta name="description" content="JaiClub Game is a modern online lottery and casino platform. Explore JaiClub login, secure registration, easy access, smooth gameplay, and trusted updates for JaiClub users in 2026." />
+  <meta name="keywords" content="Jaiclub, jaiclub login, jaiclubgame, jaiclubgames, jaiclubwin" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="JaiClub" />
+  <meta property="og:title" content="JaiClub Official Game | Best Online Lottery & Casino Platform 2026" />
+  <meta property="og:description" content="Join JaiClub for a smooth online lottery and casino experience with easy login, quick registration, and trusted gameplay updates." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=JaiClub+Official+Game" />
+  <meta name="theme-color" content="#ffcc00" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #ffd54a;
+      --gold: #ffbf00;
+      --black: #111111;
+      --dark: #1b1b1b;
+      --white: #ffffff;
+      --soft: rgba(255,255,255,0.08);
+      --shadow: 0 15px 45px rgba(0,0,0,0.22);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--black);
+      background: linear-gradient(180deg, #ffe68a 0%, #ffd54a 38%, #ffca28 100%);
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      top: -10px;
+      width: 2px;
+      height: 2px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(255,255,255,0.75);
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-20px) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(110vh) translateX(18px); opacity: 0.3; }
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 24px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero {
+      padding: 24px 0 22px;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.28);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+      padding: 22px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: nowrap;
+      margin-bottom: 18px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .logo-box {
+      width: 76px;
+      height: 76px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fff8d7, #fff0a6);
+      border: 2px dashed rgba(17,17,17,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .logo-box img, .main-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .upload-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      padding: 8px;
+      color: #5a4700;
+    }
+
+    h1 {
+      font-size: clamp(1.2rem, 2vw, 2rem);
+      line-height: 1.2;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      font-size: 0.98rem;
+      color: rgba(0,0,0,0.75);
+      max-width: 760px;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      margin-bottom: 22px;
+    }
+
+    .btn-group {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .btn {
+      border: none;
+      text-decoration: none;
+      padding: 15px 18px;
+      border-radius: 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+    .btn-login {
+      background: #1f1f1f;
+      color: #fff;
+    }
+    .btn-register {
+      background: linear-gradient(135deg, #fff9de, #ffffff);
+      color: #111;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .main-image {
+      width: 100%;
+      aspect-ratio: auto;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #fff8d2, #ffe89f);
+      border: 2px dashed rgba(0,0,0,0.18);
+      cursor: pointer;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .section-card {
+      background: rgba(255,255,255,0.30);
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin: 18px 0;
+    }
+
+    h2 {
+      font-size: clamp(1.2rem, 2vw, 2rem);
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .muted {
+      color: rgba(0,0,0,0.74);
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .step-box {
+      background: rgba(255,255,255,0.65);
+      border-radius: 20px;
+      padding: 18px;
+      border: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .step-box h3 {
+      margin-bottom: 10px;
+      font-size: 1.06rem;
+    }
+
+    .step-box p {
+      color: rgba(0,0,0,0.76);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    details {
+      background: rgba(255,255,255,0.72);
+      border-radius: 18px;
+      padding: 16px 18px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    summary {
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    details p {
+      margin-top: 10px;
+      color: rgba(0,0,0,0.76);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 10px 0 24px;
+      color: rgba(0,0,0,0.72);
+      font-size: 0.92rem;
+    }
+
+    .hidden-input {
+      display: none;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .btn-group {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-card,
+      .section-card {
+        padding: 16px;
+        border-radius: 20px;
+      }
+
+      .logo-box {
+        width: 62px;
+        height: 62px;
+        border-radius: 16px;
+      }
+
+      .btn-group {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .btn {
+        font-size: 0.95rem;
+        padding: 13px 12px;
+      }
+
+      .subtitle,
+      .muted,
+      .step-box p,
+      details p {
+        font-size: 0.92rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <input type="file" id="logoUpload" class="hidden-input" accept="image/*">
+  <input type="file" id="imageUpload" class="hidden-input" accept="image/*">
+
+  <main class="hero">
+    <div class="container">
+      <section class="hero-card">
+        <div class="topbar">
+          <div class="logo-wrap">
+            <div class="logo-box" id="logoTrigger" title="Upload Logo">
+              <img src="https://jaiclub.pro/image.jpg" alt="JaiClub Logo" />
+            </div>
+            <div>
+              <h1>JaiClub Official Game | Best Online Lottery &amp; Casino Platform 2026</h1>
+              <p class="subtitle">Discover JaiClub for modern gaming access, secure entry, and simple account support. Get started with JaiClub login, registration help, and platform information in one place.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <div class="btn-group">
+            <a class="btn btn-login" href="https://t.me/OfficialJaiClubGame" target="_blank" rel="noopener noreferrer">Login</a>
+            <a class="btn btn-register" href="https://t.me/OfficialJaiClubGame" target="_blank" rel="noopener noreferrer">Register</a>
+          </div>
+        </div>
+
+        <div class="hero-grid">
+          <div class="main-image" id="imageTrigger" title="Upload Center Image">
+            <img src="https://jaiclub.pro/image.jpg" alt="JaiClub Banner" />
+          </div>
+
+          <div class="section-card" style="margin:0; background: rgba(255,255,255,0.45);">
+            <h2>Why Choose JaiClub?</h2>
+            <p class="muted">JaiClub is designed for users looking for an easy way to explore online lottery and casino-style gaming access with a smooth mobile and desktop layout. The page is optimized with target keywords like <strong>Jaiclub</strong>, <strong>jaiclub login</strong>, <strong>jaiclubgame</strong>, <strong>jaiclubgames</strong>, and <strong>jaiclubwin</strong> to help strengthen on-page SEO relevance.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <h2>How to Register</h2>
+        <p class="muted">To register on JaiClub, tap the Register button above. You will be redirected to Telegram, where you can get the latest joining process, account setup instructions, and official support. Make sure you follow only trusted links and complete your details carefully for a smooth signup experience.</p>
+
+        <div class="steps">
+          <div class="step-box">
+            <h3>Step 1</h3>
+            <p>Click the Register button and open the official Telegram contact or channel.</p>
+          </div>
+          <div class="step-box">
+            <h3>Step 2</h3>
+            <p>Follow the registration instructions and submit the required details securely.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <h2>How to Login JaiClub</h2>
+        <p class="muted">To access your account, click the Login button. This opens Telegram, where login assistance, updated access links, and support can be provided. Users searching for JaiClub login or jaiclubgame access can use this section to understand the easiest way to enter the platform safely and quickly.</p>
+
+        <div class="steps">
+          <div class="step-box">
+            <h3>Fast Access</h3>
+            <p>Tap Login to open the Telegram support link and receive the latest official access method.</p>
+          </div>
+          <div class="step-box">
+            <h3>Secure Guidance</h3>
+            <p>Always verify links before entering your details and avoid unknown third-party pages.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <h2>About JaiClub</h2>
+        <p class="muted">JaiClub is presented as an easy-to-use gaming information page focused on accessibility, guidance, and smooth navigation. This landing page structure helps visitors quickly find login, registration, and support sections while also improving user experience for both mobile and desktop traffic. With a bright yellow premium-style design, animated falling stars, and clean content sections, the page is built to look attractive and engaging.</p>
+      </section>
+
+      <section class="section-card">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <details>
+            <summary>1. What is JaiClub?</summary>
+            <p>JaiClub is a gaming-related landing page that helps users find registration, login, and support information in one place.</p>
+          </details>
+          <details>
+            <summary>2. How do I register on JaiClub?</summary>
+            <p>Click the Register button on the homepage. It opens Telegram, where the registration steps can be shared.</p>
+          </details>
+          <details>
+            <summary>3. How do I login to JaiClub?</summary>
+            <p>Click the Login button to open Telegram support or the latest access method for your JaiClub account.</p>
+          </details>
+          <details>
+            <summary>4. Is this website mobile friendly?</summary>
+            <p>Yes. The layout is responsive and built to look clean and similar on mobile phones, tablets, and desktop screens.</p>
+          </details>
+          <details>
+            <summary>5. Can I change the logo and main image?</summary>
+            <p>Yes. This page includes upload options for both the logo and the center image, so you can customize it easily.</p>
+          </details>
+          <details>
+            <summary>6. Which keywords are targeted on this page?</summary>
+            <p>The page is optimized around Jaiclub, jaiclub login, jaiclubgame, jaiclubgames, and jaiclubwin.</p>
+          </details>
+          <details>
+            <summary>7. Will this page rank on Google instantly?</summary>
+            <p>Good on-page SEO helps, but rankings also depend on domain trust, backlinks, site speed, indexing, competition, and content quality over time.</p>
+          </details>
+        </div>
+      </section>
+
+      <div class="footer">
+        © 2026 JaiClub. All rights reserved.
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const starsContainer = document.getElementById('stars');
+    const totalStars = 90;
+
+    for (let i = 0; i < totalStars; i++) {
+      const star = document.createElement('span');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDuration = 4 + Math.random() * 7 + 's';
+      star.style.animationDelay = Math.random() * 6 + 's';
+      star.style.opacity = Math.random().toFixed(2);
+      const size = Math.random() * 2 + 1;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      starsContainer.appendChild(star);
+    }
+
+    function setupImageUpload(triggerId, inputId, previewId, placeholderId) {
+      const trigger = document.getElementById(triggerId);
+      const input = document.getElementById(inputId);
+      const preview = document.getElementById(previewId);
+      const placeholder = document.getElementById(placeholderId);
+
+      trigger.addEventListener('click', () => input.click());
+      input.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          preview.src = event.target.result;
+          preview.style.display = 'block';
+          placeholder.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    setupImageUpload('logoTrigger', 'logoUpload', 'logoPreview', 'logoPlaceholder');
+    setupImageUpload('imageTrigger', 'imageUpload', 'mainImagePreview', 'imagePlaceholder');
+  </script>
+</body>
+</html>
